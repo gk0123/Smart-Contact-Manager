@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>This is about page</h1>
+    <hr/>
+    <div class="host-tag" th:replace="${isLogin} ? ~{base::parent(~{::section})}: ~{base::test(~{::#not_Logged_In})}">
+      <section>
+        <h2>Dynamic content</h2>
+        <p>This is services passed to base parent</p>
+      </section>
+      <section id="not_Logged_In">
+        <h2>User is not logged in</h2>
+      </section>
+    </div>
+  </body>
+</html>
