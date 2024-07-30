@@ -1,69 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" th:replace="~{base::parent(~{::#content}, ~{::title}, ~{})}">
   <head>
-    <meta charset="utf-8" />
-    <title>SCM</title>
-    <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
-      rel="stylesheet"
-    />
+    <title>Home Page</title>
   </head>
   <body>
-    <div class="bg-slate-400 text-center w-1/2 mx-auto mt-4 space-y-3 rounded">
-      <h1 th:text="${name}" class="text-3xl font-bold">Welcome to Home page</h1>
-      <p class="font-medium text-center">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse veritatis
-        ipsum, eum doloremque quaerat voluptatibus id similique placeat
-        repudiandae perspiciatis architecto blanditiis temporibus magni ad vitae
-        aperiam exercitationem quis adipisci!
-      </p>
-      <button
-        class="px-3 py-3 rounded bg-blue-700 text-white hover:bg-blue-600 hover:text-black"
-      >
-        Click here
-      </button>
+    <div id="content">
+      <h1 class="font-bold">Welcome to Home page</h1>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, tenetur.</p>
     </div>
-
-    <!-- flow bite content -->
-    <div
-      class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-    >
-      <a href="#">
-        <h5
-          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-        >
-          Noteworthy technology acquisitions 2021
-        </h5>
-      </a>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-        Here are the biggest enterprise technology acquisitions of 2021 so far,
-        in reverse chronological order.
-      </p>
-      <a
-        href="#"
-        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      >
-        Read more
-        <svg
-          class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 14 10"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M1 5h12m0 0L9 1m4 4L9 9"
-          />
-        </svg>
-      </a>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
   </body>
 </html>

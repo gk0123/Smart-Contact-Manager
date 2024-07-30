@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" th:replace="~{base::parent(~{::#content}, ~{::title}, ~{::script})}">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>About Page</title>
   </head>
   <body>
-    <h1>This is about page</h1>
-    <hr/>
-    <div class="host-tag" th:replace="${isLogin} ? ~{base::parent(~{::section})}: ~{base::test(~{::#not_Logged_In})}">
-      <section>
-        <h2>Dynamic content</h2>
-        <p>This is services passed to base parent</p>
-      </section>
-      <section id="not_Logged_In">
-        <h2>User is not logged in</h2>
-      </section>
+    <div id="content">
+      <h1 class="font-bold">Welcome to about page</h1>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, tenetur.</p>
     </div>
+    <script>
+      console.log("about page");
+    </script>
+    <script>
+      console.log("Second script tag");
+    </script>
   </body>
 </html>
