@@ -9,7 +9,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title th:replace="${title}">Base Page</title>
-    <link rel="stylesheet" th:href="@{/css/output.css}" />
+    
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
       rel="stylesheet"
@@ -22,6 +22,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" th:href="@{/css/output.css}" />
+    <link rel="stylesheet" data-th-href="@{'/css/style.css'}">
   </head>
   <body class="dark:bg-gray-900 bg-gray-100 dark:text-white">
     <!-- common header -->
@@ -30,7 +32,6 @@
       <section th:replace="${content}"></section>
     </div>
     <!-- common footer -->
-    <footer class="p-4">Footer: This is a common footer</footer>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
     <script data-th-src="@{'/js/script.js'}"></script>
     <th:block th:replace="${script}"></th:block>
