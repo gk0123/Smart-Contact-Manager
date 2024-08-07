@@ -9,7 +9,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title th:replace="${title}">Base Page</title>
-    
+
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
       rel="stylesheet"
@@ -23,11 +23,20 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" th:href="@{/css/output.css}" />
-    <link rel="stylesheet" data-th-href="@{'/css/style.css'}">
+    <link rel="stylesheet" data-th-href="@{'/css/style.css'}" />
   </head>
   <body class="dark:bg-gray-900 bg-gray-100 dark:text-white">
+    <!-- if user is logged in : navbar -->
+    <div data-th-if="${loggedInUser}">
+      <div data-th-replace="~{user/user_navbar::user-navbar}"></div>
+    </div>
+    
+    <!-- if user of not logged : navbar -->
+    <div data-th-unless="${loggedInUser}">
+      <div data-th-replace="~{navbar::navbar}"></div>
+    </div>
+
     <!-- common header -->
-    <div data-th-replace="navbar::navbar"></div>
     <div class="p-4">
       <section th:replace="${content}"></section>
     </div>

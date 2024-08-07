@@ -18,7 +18,6 @@ import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class PageController {
@@ -68,7 +67,7 @@ public class PageController {
         return new String("login");
     }
 
-    // ro process registration page
+    // registration page
     @GetMapping("/register")
     public String register(Model model) {
 
@@ -96,7 +95,7 @@ public class PageController {
             return "register";
         }
 
-        // TODO::Validate userForm
+        // TODO::Validate userForm[Next Video]
 
         // save to database
 
@@ -121,7 +120,7 @@ public class PageController {
         user.setPhoneNumber(userForm.getPhoneNumber());
         user.setEnabled(true);
         user.setProfilePic(
-                "https://www.learncodewithdurgesh.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdurgesh_sir.35c6cb78.webp&w=1920&q=75");
+                "https://as1.ftcdn.net/v2/jpg/00/64/67/52/1000_F_64675209_7ve2XQANuzuHjMZXP3aIYIpsDKEbF5dD.jpg");
 
         User savedUser = userService.saveUser(user);
 
