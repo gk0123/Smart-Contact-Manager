@@ -21,6 +21,9 @@
             <div
               class="card block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
             >
+
+            <div data-th-replace="message::messagebox">This is a msg box</div>
+            
               <h1 class="text-2xl font-semibold">Add new contact</h1>
               <p class="text-gray-500">
                 This contact will be saved on cloud, you can also directly email
@@ -41,7 +44,7 @@
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >Contact name</label
                   >
-                  <div class="relative mb-6">
+                  <div class="relative mb-1">
                     <div
                       class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
                     >
@@ -54,6 +57,13 @@
                       placeholder="name"
                     />
                   </div>
+                  <p
+                    class="text-red-600"
+                    data-th-field="${#fields.hasErrors('name')}"
+                    data-th-errors="*{name}"
+                  >
+                    Invalid name
+                  </p>
                 </div>
                 <!-- email form -->
                 <div class="mb-3">
@@ -62,7 +72,7 @@
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >Contact email</label
                   >
-                  <div class="relative mb-6">
+                  <div class="relative mb-1">
                     <div
                       class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
                     >
@@ -75,6 +85,13 @@
                       placeholder="example@gmail.com"
                     />
                   </div>
+                  <p
+                    class="text-red-600"
+                    data-th-field="${#fields.hasErrors('email')}"
+                    data-th-errors="*{email}"
+                  >
+                    Invalid name
+                  </p>
                 </div>
                 <!-- phone number -->
                 <div class="mb-3">
@@ -83,7 +100,7 @@
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >Contact Phone</label
                   >
-                  <div class="relative mb-6">
+                  <div class="relative mb-1">
                     <div
                       class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
                     >
@@ -96,6 +113,13 @@
                       placeholder="9123456789"
                     />
                   </div>
+                  <p
+                    class="text-red-600"
+                    data-th-field="${#fields.hasErrors('phoneNumber')}"
+                    data-th-errors="*{phoneNumber}"
+                  >
+                    Invalid name
+                  </p>
                 </div>
 
                 <!-- address -->
@@ -111,6 +135,13 @@
                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Address of the contact"
                   ></textarea>
+                  <p
+                    class="text-red-600"
+                    data-th-field="${#fields.hasErrors('address')}"
+                    data-th-errors="*{address}"
+                  >
+                    Invalid name
+                  </p>
                 </div>
 
                 <!-- description -->
