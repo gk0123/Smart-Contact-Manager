@@ -21,9 +21,8 @@
             <div
               class="card block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
             >
+              <div data-th-replace="message::messagebox">This is a msg box</div>
 
-            <div data-th-replace="message::messagebox">This is a msg box</div>
-            
               <h1 class="text-2xl font-semibold">Add new contact</h1>
               <p class="text-gray-500">
                 This contact will be saved on cloud, you can also directly email
@@ -208,9 +207,16 @@
                     >Contact image</label
                   >
                   <input
+                    id="image_file_input"
                     class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                     data-th-field="*{contactImage}"
                     type="file"
+                  />
+                  <img
+                    class="max-h-52 rounded-lg shadow m-3 mx-auto"
+                    src=""
+                    id="upload_image_preview"
+                    alt=""
                   />
                 </div>
 
@@ -249,8 +255,9 @@
       </div>
     </div>
 
+    <script data-th-src="@{'/js/admin.js'}"></script>
     <script>
-      console.log("Profile page");
+      console.log("This is contacts page");
     </script>
   </body>
 </html>
