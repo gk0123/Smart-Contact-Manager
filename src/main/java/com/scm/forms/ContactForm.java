@@ -39,6 +39,7 @@ public class ContactForm {
     private String websiteLink;
 
     private String linkedInLink;
-    
-    private MultipartFile profileImage;
+    //annotation create krenge jo hamari file to validate
+    //size and resolution
+    private MultipartFile contactImage;
 }
