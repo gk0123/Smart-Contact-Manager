@@ -185,7 +185,12 @@
                     <td class="px-6 py-4">
                         <a href=""><i class="fa-solid fa-trash w-6 h-6"></i></a>
                         <a href=""><i class="fa-solid fa-pen w-6 h-6"></i></a>
-                        <a href=""><i class="fa-solid fa-eye w-6 h-6"></i></a>
+                        <!-- To the the ${c.id} 1st method is -> th:data-id="${c.id}" th:onclick="loadContactData(this.getAttribute('data-id'))"
+                            2nd direct method is below --> 
+                        <button 
+                        th:onclick="loadContactData([[${c.id}]])"
+                        >
+                        <i class="fa-solid fa-eye w-6 h-6"></i></button>
                     </td>
                   </tr>
                 </tbody>
@@ -221,6 +226,7 @@
         <div data-th-replace="~{user/contact_modals::contact}"></div>
       </div>
     </div>
+    <script data-th-src="@{'/js/contacts.js'}"></script>
     <script>
       console.log("Profile page");
     </script>
