@@ -33,17 +33,40 @@ function closeContactModal() {
   contactModal.hide();
 }
 async function loadContactData(id) {
-    try {
-        const data = await (
-            (await fetch(`http://localhost:8081/api/contacts/${id}`)).json()
-        )
-        console.log(data);
-        console.log(data.name);
-        console.log(data.email);
-        document.querySelector('#contact_name').innerHTML=data.name;
-        document.querySelector('#contact_email').innerHTML=data.email;
-        openContactModal();
-    } catch (error) {
-        console.log("Error", error);
+  try {
+    const data = await (
+      await fetch(`http://localhost:8081/api/contacts/${id}`)
+    ).json();
+    console.log(data);
+    document.querySelector("#contact_name").innerHTML = data.name;
+    document.querySelector("#contact_email").innerHTML = data.email;
+    document.querySelector("#contact_phone").innerHTML = data.phoneNumber;
+    document.querySelector("#contact_address").innerHTML = data.address;
+    document.querySelector("#contact_about").innerHTML = data.description;
+    document.querySelector("#contact_image").src = data.picture;
+    document.querySelector("#contact_favorite").innerHTML = data.favorite;
+    if (data.websiteLink) {
+      document.querySelector("#contact_website").href = data.websiteLink;
+      document.querySelector("#contact_website").innerHTML = data.websiteLink;
+    } else {
+      document.querySelector("#contact_website").innerHTML = "Not Provided";
     }
+    if (data.linkedInLink) {
+      document.querySelector("#contact_linkedIn").href = data.linkedInLink;
+      document.querySelector("#contact_linkedIn").innerHTML = data.linkedInLink;
+    } else {
+      document.querySelector("#contact_linkedIn").innerHTML = "Not Provided";
+    }
+
+    const contactFavorite = document.querySelector("#contact_favorite");
+    if (data.favorite) {
+      contactFavorite.innerHTML =
+        "<i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i><i class='fas fa-star text-yellow-400'></i>";
+    } else {
+      contactFavorite.innerHTML = "Not your favorite contact";
+    }
+    openContactModal();
+  } catch (error) {
+    console.log("Error", error);
+  }
 }

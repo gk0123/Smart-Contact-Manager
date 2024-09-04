@@ -4,7 +4,7 @@
   th:replace="~{base::parent(~{::#content}, ~{::title}, ~{::script})}"
 >
   <head>
-    <title>All Your Contacts</title>
+    <title>Search Contacs</title>
   </head>
   <body>
     <div id="content">
@@ -14,12 +14,16 @@
         <div data-th-replace="~{user/sidebar::sidebar}"></div>
       </div>
 
-      <div class="sm:pl-64 pt-20">
-        <div class="">
-          <h1 class="text-5xl mb-2 text-center">All Your Contacts</h1>
-          <p class="text-center p-4">List of all contacts...</p>
+      <div class="sm:pl-64 pt-20" style="height: 1000px">
+        <div class="flex flex-col justify-center items-center">
+          <h1 class="text-5xl">Search Results</h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias,
+            tenetur.
+          </p>
+        </div>
 
-          <div class="contacts_container p-5">
+        <div class="contacts_container p-5">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
               <form data-th-action="@{'/user/contacts/search'}">
                 <div
@@ -191,11 +195,10 @@
               </div>
             </div>
           </div>
-        </div>
-        <div data-th-replace="~{user/contact_modals::contact}"></div>
+          <div data-th-replace="~{user/contact_modals::contact}"></div>
       </div>
     </div>
-    <script data-th-src="@{'/js/contacts.js'}"></script>
+
     <script>
       console.log("Profile page");
     </script>

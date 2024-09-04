@@ -108,17 +108,16 @@ public class ContactController {
     // view contacts
     @RequestMapping
     public String viewContacts(
-        @RequestParam(value = "page", defaultValue = "0") int page,
-        @RequestParam(value = "size", defaultValue = AppConstants.PAGE_SIZE+"") int size,
-        @RequestParam(value = "sortBy", defaultValue = "name") String sortBy,
-        @RequestParam(value = "direction", defaultValue = "asc") String direction,
-        Model model, Authentication authentication) {
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = AppConstants.PAGE_SIZE + "") int size,
+            @RequestParam(value = "sortBy", defaultValue = "name") String sortBy,
+            @RequestParam(value = "direction", defaultValue = "asc") String direction,
+            Model model, Authentication authentication) {
 
-        //load all the user contacts
+        // load all the user contacts
         String username = Helper.getEmailOfLoggedInUser(authentication);
 
         User user = userService.getUserByEmail(username);
-
 
         Page<Contact> pageContact = contactService.getByUser(user, page, size, sortBy, direction);
 
@@ -126,6 +125,36 @@ public class ContactController {
 
         return "user/contacts";
 
+    }
+
+    // search handler
+    @RequestMapping("/search")
+    public String searchHandler(
+            @RequestParam("field") String field,
+            @RequestParam("keyword") String value,
+            @RequestParam(value = "size", defaultValue = AppConstants.PAGE_SIZE + "") int size,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "sortBy", defaultValue = "name") String sortBy,
+            @RequestParam(value = "direction", defaultValue = "asc") String direction,
+            Model model) {
+
+        logger.info("field {} keyword{} ", field, value);
+
+        Page<Contact> pageContact = null;
+
+        if (field.equalsIgnoreCase("name")) {
+            pageContact = contactService.searchByName(value, size, page, sortBy, direction);
+        } else if (field.equalsIgnoreCase("email")) {
+            pageContact = contactService.searchByEmail(value, size, page, sortBy, direction);
+        } else if (field.equalsIgnoreCase("phone")) {
+            pageContact = contactService.searchByPhoneNumber(value, size, page, sortBy, direction);
+        }
+
+        logger.info("PageContact: {}", pageContact);
+
+        model.addAttribute("pageContact", pageContact);
+
+        return "user/search";
     }
 
 }
