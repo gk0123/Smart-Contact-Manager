@@ -21,19 +21,23 @@
 
           <div class="contacts_container p-5">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-              <form data-th-action="@{'/user/contacts/search'}">
+              <div data-th-replace="~{message :: messagebox}"></div>
+
+              <form
+                data-th-object="${contactSearchForm}"
+                data-th-action="@{'/user/contacts/search'}"
+              >
                 <div
                   class="flex p-5 items-center justify-start space-x-4 flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-800"
                 >
                   <div class="flex space-x-4 items-center">
-                    <div class="text-center ml-4">Search by </div>
+                    <div class="text-center ml-4">Search by</div>
                     <div class="search_box">
                       <select
-                        name="field"
-                        id="countries"
+                        data-th-field="*{field}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       >
-                        <option selected="name">Name</option>
+                        <option value="name" selected="name">Name</option>
                         <option value="email">Email</option>
                         <option value="phone">Phone</option>
                       </select>
@@ -63,7 +67,7 @@
                       </div>
                     </div>
                     <input
-                      name="keyword"
+                      data-th-field="*{value}"
                       type="text"
                       id="table-search-users"
                       class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -79,6 +83,8 @@
                 </div>
               </form>
               <table
+                data-th-unless="${pageContact.empty}"
+                data-th-object="${contactSearchForm}"
                 class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
               >
                 <thead
@@ -141,8 +147,13 @@
                       </div>
                     </td>
                     <td class="px-6 py-4">
-                      <a href=""><i class="fa-solid fa-trash w-6 h-6"></i></a>
-                      <a href=""><i class="fa-solid fa-pen w-6 h-6"></i></a>
+                      <!-- delete contact -->
+                      <a th:onclick="deleteContact([[${c.id}]])">
+                        <i class="fa-solid fa-trash w-6 h-6"></i>
+                      </a>
+                      <!-- update contact -->
+                      <a data-th-href="@{'/user/contacts/view/'+*{id}}"><i class="fa-solid fa-pen w-6 h-6"></i></a>
+                      <!-- view contact -->
                       <!-- To the the ${c.id} 1st method is -> th:data-id="${c.id}" th:onclick="loadContactData(this.getAttribute('data-id'))"
                               2nd direct method is below -->
                       <button th:onclick="loadContactData([[${c.id}]])">
@@ -154,6 +165,8 @@
               </table>
               <!-- pagination -->
               <div
+                data-th-unless="${pageContact.empty}"
+                data-th-object="${contactSearchForm}"
                 class="pagination_container bg-white dark:bg-gray-800 p-5 text-center"
               >
                 <nav aria-label="Page navigation example">
@@ -189,6 +202,12 @@
                   </ul>
                 </nav>
               </div>
+              <h1
+                class="text-5xl text-center bg-white p-6 dark:bg-gray-800"
+                data-th-if="${pageContact.empty}"
+              >
+                No Contacts Added
+              </h1>
             </div>
           </div>
         </div>

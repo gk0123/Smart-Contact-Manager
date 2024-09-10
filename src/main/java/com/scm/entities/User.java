@@ -35,7 +35,6 @@ public class User implements UserDetails {
     @Id
     private String userId;
     @Column(name = "user_name", nullable = false)
-
     private String name;
     @Column(unique = true, nullable = false)
     private String email;

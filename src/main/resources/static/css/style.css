@@ -38,3 +38,18 @@
     cursor: not-allowed;
   }
 }
+
+.swal2-confirm {
+  background-color: #3085d6 !important;
+  color: white !important;
+}
+
+.swal2-deny {
+  background-color: #d33 !important;
+  color: white !important;
+}
+
+.swal2-cancel {
+  background-color: #aaa !important;
+  color: white !important;
+}
