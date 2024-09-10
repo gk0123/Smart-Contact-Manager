@@ -32,6 +32,4 @@ public class UserForm {
     @Size(min = 9, max = 11, message = "Invalid Phone Number")
     private String phoneNumber;
 
-
-
 }

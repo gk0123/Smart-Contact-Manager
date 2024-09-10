@@ -2,6 +2,8 @@ package com.scm.forms;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.scm.validators.ValidFile;
+
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -42,7 +44,7 @@ public class ContactForm {
     private String linkedInLink;
     //annotation create krenge jo hamari file to validate
     //size and resolution
-    
+    @ValidFile(message = "Invalid File")
     private MultipartFile contactImage;
 
     private String picture;

@@ -53,7 +53,6 @@ public class ContactController {
     // add contact page: handler
     public String addContactView(Model model) {
         ContactForm contactForm = new ContactForm();
-
         contactForm.setFavorite(true);
         model.addAttribute("contactForm", contactForm);
         return "user/add_contact";
@@ -63,7 +62,6 @@ public class ContactController {
     public String saveContact(@Valid @ModelAttribute ContactForm contactForm, BindingResult result,
             Authentication authentication, HttpSession session) {
 
-        // 1 validate form
         if (result.hasErrors()) {
             session.setAttribute("message", Message.builder()
                     .content("Please correct the following errors")
@@ -79,10 +77,6 @@ public class ContactController {
         // contactForm.getContactImage().getOriginalFilename());
         // image process ka code
 
-        String filename = UUID.randomUUID().toString();
-
-        String fileURL = imageService.uploadImage(contactForm.getContactImage(), filename);
-
         // form -->contact
         Contact contact = new Contact();
         contact.setName(contactForm.getName());
@@ -94,8 +88,12 @@ public class ContactController {
         contact.setWebsiteLink(contactForm.getWebsiteLink());
         contact.setDescription(contactForm.getDescription());
         contact.setFavorite(contactForm.isFavorite());
-        contact.setCloudinaryImagePublicId(filename);
-        contact.setPicture(fileURL);
+        if (contactForm.getContactImage() != null && !contactForm.getContactImage().isEmpty()) {
+            String filename = UUID.randomUUID().toString();
+            String fileURL = imageService.uploadImage(contactForm.getContactImage(), filename);
+            contact.setCloudinaryImagePublicId(filename);
+            contact.setPicture(fileURL);
+        }
         contactService.save(contact);
         System.out.println(contactForm);
         // 3 set the contact picture url
@@ -210,7 +208,7 @@ public class ContactController {
             BindingResult bindingResult,
             Model model) {
         // update the contact
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "user/update_contact_view";
         }
 
