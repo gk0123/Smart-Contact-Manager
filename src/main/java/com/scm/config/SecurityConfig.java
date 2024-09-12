@@ -53,6 +53,8 @@ public class SecurityConfig {
     private SecurityCustomUserDetailService userDetailService;
     @Autowired
     private OAuthAuthenticationSucessHandler handler;
+    @Autowired
+    private AuthFailureHandler authFailureHandler;
 
     //configuration for authentication provider
     @Bean
@@ -105,6 +107,8 @@ public class SecurityConfig {
             //     }
                 
             // });
+
+            formLogin.failureHandler(authFailureHandler);
 
         });
         httpSecurity.csrf(AbstractHttpConfigurer :: disable );

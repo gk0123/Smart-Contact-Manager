@@ -12,12 +12,14 @@ import org.springframework.stereotype.Service;
 
 import com.scm.entities.User;
 import com.scm.helpers.AppConstants;
+import com.scm.helpers.Helper;
 import com.scm.helpers.ResourceNotFoundException;
 import com.scm.repositories.UserRepo;
+import com.scm.services.EmailService;
 import com.scm.services.UserService;
 
 @Service
-public class UsersServicesImpl implements UserService{
+public class UsersServicesImpl implements UserService {
 
     @Autowired
     private UserRepo userRepo;
@@ -25,19 +27,30 @@ public class UsersServicesImpl implements UserService{
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private EmailService emailService;
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
     public User saveUser(User user) {
-        //user id : we have to generate
+        // user id : we have to generate
         String userId = UUID.randomUUID().toString();
         user.setUserId(userId);
-        //password encode
+        // password encode
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        //set the user role
+        // set the user role
         user.setRoleList(List.of(AppConstants.ROLE_USER));
         logger.info(user.getProvider().toString());
-        return userRepo.save(user);
+
+        String emailToken = UUID.randomUUID().toString();
+        user.setEmailToken(emailToken);
+
+        User savedUser = userRepo.save(user);
+        String emailLink = Helper.getLinkForEmailVerification(emailToken);
+        emailService.sendEmail(savedUser.getEmail(), "Email Verification for SCM",
+                "Your verification link for the Smart Contact Manager is : " + emailLink);
+        return savedUser;
     }
 
     @Override
@@ -48,8 +61,8 @@ public class UsersServicesImpl implements UserService{
     @Override
     public Optional<User> updateUser(User user) {
         User user2 = userRepo.findById(user.getUserId())
-            .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-        //update user2 from user
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        // update user2 from user
         user2.setName(user.getName());
         user2.setEmail(user.getEmail());
         user2.setContacts(user.getContacts());
@@ -63,7 +76,7 @@ public class UsersServicesImpl implements UserService{
         user2.setProvider(user.getProvider());
         user2.setProviderUserId(user.getProviderUserId());
 
-        //now save the user to the db
+        // now save the user to the db
         User save = userRepo.save(user2);
         return Optional.ofNullable(save);
     }
@@ -71,20 +84,20 @@ public class UsersServicesImpl implements UserService{
     @Override
     public void deleteUser(String id) {
         User user2 = userRepo.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
         userRepo.delete(user2);
     }
 
     @Override
     public boolean isUserExist(String userId) {
         User user2 = userRepo.findById(userId).orElse(null);
-        return user2!=null;
+        return user2 != null;
     }
 
     @Override
     public boolean isUserExistByEmail(String email) {
         User user = userRepo.findByEmail(email).orElse(null);
-        return user!=null;
+        return user != null;
     }
 
     @Override
@@ -96,7 +109,5 @@ public class UsersServicesImpl implements UserService{
     public User getUserByEmail(String email) {
         return userRepo.findByEmail(email).orElse(null);
     }
-
-    
 
 }

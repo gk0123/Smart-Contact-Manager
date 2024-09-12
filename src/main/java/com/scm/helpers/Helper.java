@@ -27,8 +27,8 @@ public class Helper {
                 username = oauth2User.getAttribute("email");
             } else if ("github".equalsIgnoreCase(clientId)) {
                 logger.info("Getting email from GitHub");
-                username = oauth2User.getAttribute("email") != null 
-                        ? oauth2User.getAttribute("email") 
+                username = oauth2User.getAttribute("email") != null
+                        ? oauth2User.getAttribute("email")
                         : oauth2User.getAttribute("login") + "@gmail.com";
             }
 
@@ -40,6 +40,6 @@ public class Helper {
     }
 
     public static String getLinkForEmailVerification(String emailToken) {
-        return String.format("http://localhost:8081/auth/verify-email?token=%s", emailToken);
+        return String.format("http://localhost:8081/auth/verify-email?token=" + emailToken);
     }
 }

@@ -118,7 +118,7 @@ public class PageController {
         user.setPassword(userForm.getPassword());
         user.setAbout(userForm.getAbout());
         user.setPhoneNumber(userForm.getPhoneNumber());
-        user.setEnabled(true);
+        user.setEnabled(false);
         user.setProfilePic(
                 "https://as1.ftcdn.net/v2/jpg/00/64/67/52/1000_F_64675209_7ve2XQANuzuHjMZXP3aIYIpsDKEbF5dD.jpg");
 
