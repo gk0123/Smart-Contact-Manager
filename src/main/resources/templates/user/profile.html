@@ -15,12 +15,100 @@
       </div>
 
       <div class="sm:pl-64 pt-20" style="height: 1000px">
-        <div class="flex flex-col justify-center items-center">
-          <h1 class="text-5xl">Welcome to Profile page</h1>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias,
-            tenetur.
-          </p>
+        <!-- profile card -->
+        <div
+          class="max-w-full sm:max-w-lg md:max-w-xl lg:max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+        >
+          <!-- Profile Picture Section -->
+          <div
+            class="flex justify-center bg-gradient-to-r from-blue-400 to-blue-600 p-6"
+          >
+            <img
+              class="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full object-cover shadow-md border-4 border-white"
+              data-th-src="${loggedInUser.profilePic}"
+              alt="Profile Picture"
+            />
+          </div>
+
+          <!-- User Information Section -->
+          <div class="p-6 space-y-4">
+            <!-- Name -->
+            <h2
+              class="text-center text-2xl font-semibold text-gray-900 lg:text-3xl"
+              data-th-text="${loggedInUser.name}"
+            >
+              Sample Name
+            </h2>
+
+            <!-- user id -->
+            <div class="flex justify-between items-center">
+              <span class="font-medium text-gray-700"
+                >User secret id for nerds:</span
+              >
+              <span class="text-gray-500" data-th-text="${loggedInUser.userId}"
+                >sample.email@example.com</span
+              >
+            </div>
+
+            <!-- Email -->
+            <div class="flex justify-between items-center">
+              <span class="font-medium text-gray-700">Email:</span>
+              <span class="text-gray-500" data-th-text="${loggedInUser.email}"
+                >sample.email@example.com</span
+              >
+            </div>
+
+            <!-- Phone Number -->
+            <div class="flex justify-between items-center">
+              <span class="font-medium text-gray-700">Phone:</span>
+              <span
+                class="text-gray-500"
+                data-th-text="'+91 '+${loggedInUser.phoneNumber}"
+                >123-456-7890</span
+              >
+            </div>
+
+            <!-- About -->
+            <div>
+              <span class="font-medium text-gray-700 block">About me:</span>
+              <p
+                class="text-gray-500 mt-1"
+                data-th-text="${loggedInUser.about}"
+              >
+                Sample description about the user goes here.
+              </p>
+            </div>
+
+            <!-- Email Verified -->
+            <div class="flex justify-between items-center">
+              <span class="font-medium text-gray-700">Email Verified:</span>
+              <span
+                class="text-gray-500"
+                data-th-text="${loggedInUser.emailVerified?'Yes':'No'}"
+                >No</span
+              >
+            </div>
+
+            <!-- Phone Verified -->
+            <div class="flex justify-between items-center">
+              <span class="font-medium text-gray-700">Phone Verified:</span>
+              <span
+                class="text-gray-500"
+                data-th-text="${loggedInUser.phoneVerified?'Yes':'No'}"
+                >Yes</span
+              >
+            </div>
+
+            <!-- Provider -->
+            <div class="flex justify-between items-center">
+              <span class="font-medium text-gray-700">Logged in by:</span>
+              <span
+                class="text-gray-500"
+                data-th-text="${loggedInUser.provider}"
+                >GOOGLE</span
+              >
+            </div>
+          </div>
         </div>
       </div>
     </div>
