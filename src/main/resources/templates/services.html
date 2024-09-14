@@ -1,14 +1,165 @@
 <!DOCTYPE html>
 <html lang="en" th:replace="~{base::parent(~{::#content}, ~{::title}, ~{})}">
-  <head><title>Services Page</title></head>
-  <body>
-    <div id="content">
-      <h1 class="font-bold">Welcome to services page</h1>
-      <h2>services offered by scm</h2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, tenetur.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <div id="content" class="container mx-auto p-6">
+      <header class="bg-blue-600 text-white py-4 rounded">
+        <div class="text-center">
+          <h1 class="text-3xl font-bold">Welcome to the Services Page</h1>
+          <p class="text-lg">Discover the services offered by SCM</p>
+        </div>
+      </header>
+      <main class="mt-6">
+        <section
+          class="bg-white shadow-md rounded-lg p-6 mb-6 bg-gray-50 dark:bg-gray-900 mb-3"
+        >
+          <h2
+            class="text-3xl font-semibold text-center text-gray-800 dark:text-gray-200 mb-8"
+          >
+            Our Services
+          </h2>
+          <p class="text-lg leading-relaxed text-gray-700 mb-6 dark:text-white">
+            Welcome to the Smart Contact Manager (SCM) services page. Here, you
+            can learn about the various features and services we offer to
+            enhance your contact management experience.
+          </p>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+            <!-- Service 1 -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                Contact Management
+              </h3>
+              <p class="text-gray-700">
+                Efficiently manage and organize your contacts with an intuitive
+                interface. Add, update, and delete contacts with ease.
+                Categories and tags help keep your contact list organized, and
+                search functionality makes it easy to find specific contacts.
+              </p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                Direct Mailing
+              </h3>
+              <p class="text-gray-700">
+                Reach out to your contacts directly through integrated mailing
+                features. Create customized email templates, schedule emails,
+                and track delivery and open rates. Ideal for marketing campaigns
+                and regular updates to your network.
+              </p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                Customizable Profiles
+              </h3>
+              <p class="text-gray-700">
+                Personalize contact profiles with detailed information such as
+                job titles, social media links, and custom fields. Upload
+                profile pictures and notes to enhance contact details and make
+                your management experience more tailored.
+              </p>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                Secure Login
+              </h3>
+              <p class="text-gray-700">
+                Ensure your data is protected with robust security features. SCM
+                offers secure login options including email authentication and
+                OAuth integrations with Google and GitHub. Multi-factor
+                authentication can be enabled for added security.
+              </p>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                Integration with Other Platforms
+              </h3>
+              <p class="text-gray-700">
+                Seamlessly integrate SCM with other platforms such as CRM
+                systems, email services, and calendar applications. Sync contact
+                information across platforms to maintain consistency and
+                streamline your workflow.
+              </p>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                Advanced Search and Filtering
+              </h3>
+              <p class="text-gray-700">
+                Utilize advanced search and filtering options to quickly find
+                and manage your contacts. Apply various filters such as tags,
+                categories, and custom fields to refine your search and locate
+                specific contacts or groups.
+              </p>
+            </div>
+
+            <!-- Service 7 -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                Reporting and Analytics
+              </h3>
+              <p class="text-gray-700">
+                Generate reports and analyze data related to your contacts and
+                mailing activities. Track metrics such as engagement rates,
+                contact growth, and campaign performance to make data-driven
+                decisions and optimize your contact management strategy.
+              </p>
+            </div>
+
+            <!-- Service 8 -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                API Access
+              </h3>
+              <p class="text-gray-700">
+                Access SCM functionalities programmatically through a
+                well-documented API. Integrate with your own applications or
+                third-party services.
+              </p>
+            </div>
+
+            <!-- Service 9 -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                Mobile Application
+              </h3>
+              <p class="text-gray-700">
+                Use the SCM mobile app to manage your contacts on the go.
+                Available for both Android and iOS with a user-friendly
+                interface.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="bg-gray-800 text-white py-4 rounded-b-lg">
+        <div class="text-center">
+          <p>&copy; 2024 Smart Contact Manager. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
+
     <script>
-      console.log("Services Page")
+      console.log("Services Page");
     </script>
   </body>
 </html>

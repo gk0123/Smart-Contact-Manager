@@ -5,8 +5,204 @@
   </head>
   <body>
     <div id="content">
-      <h1 class="font-bold">Welcome to Home page</h1>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, tenetur.</p>
+      <!-- Banner Section -->
+      <section
+        class="w-full bg-blue-600 dark:bg-blue-700 text-white animate__animated animate__fadeInDown"
+        style="
+          padding: 60px !important;
+          border-radius: 30px;
+          margin-top: 20px;
+          margin-bottom: 10px;
+        "
+      >
+        <div class="container mx-auto px-4 text-center">
+          <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+            Welcome to Contact Manager
+          </h2>
+          <p class="text-lg sm:text-xl mb-10">
+            Manage all your contacts effortlessly and securely in one place.
+          </p>
+          <a
+            data-th-href="@{'/register'}"
+            class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-200 transition duration-300 transform hover:scale-105"
+            aria-label="Get Started"
+          >
+            Get Started
+          </a>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section id="features" class="py-16 bg-gray-50 dark:bg-gray-900 mb-3">
+        <div class="container mx-auto px-6">
+          <h2
+            class="text-3xl font-semibold text-center text-gray-800 dark:text-gray-200 mb-8"
+          >
+            Key Features of Smart Contact Manager
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div
+              class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 text-center"
+            >
+              <div
+                class="bg-blue-600 dark:bg-blue-800 text-white w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center"
+              >
+                <i class="fa-solid fa-people-roof"></i>
+              </div>
+              <h3
+                class="text-xl font-semibold text-gray-800 dark:text-gray-200"
+              >
+                Centralized Contact Management
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 mt-4">
+                Organize and store all your personal and professional contacts
+                in one secure place.
+              </p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div
+              class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 text-center"
+            >
+              <div
+                class="bg-blue-600 dark:bg-blue-800 text-white w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center"
+              >
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+              <h3
+                class="text-xl font-semibold text-gray-800 dark:text-gray-200"
+              >
+                Easy Search & Filtering
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 mt-4">
+                Quickly find contacts using our powerful search and filtering
+                options.
+              </p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div
+              class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 text-center"
+            >
+              <div
+                class="bg-blue-600 dark:bg-blue-800 text-white w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center"
+              >
+                <i class="fa-solid fa-lock"></i>
+              </div>
+              <h3
+                class="text-xl font-semibold text-gray-800 dark:text-gray-200"
+              >
+                Secure & Private
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 mt-4">
+                Protect your data with strong security protocols, ensuring your
+                contacts remain private.
+              </p>
+            </div>
+
+            <!-- Feature 4 -->
+            <div
+              class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 text-center"
+            >
+              <div
+                class="bg-blue-600 dark:bg-blue-800 text-white w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center"
+              >
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <h3
+                class="text-xl font-semibold text-gray-800 dark:text-gray-200"
+              >
+                Direct Email Integration
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 mt-4">
+                Send emails directly to contacts without leaving the platform,
+                streamlining communication.
+              </p>
+            </div>
+
+            <!-- Feature 5 -->
+            <div
+              class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 text-center"
+            >
+              <div
+                class="bg-blue-600 dark:bg-blue-800 text-white w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center"
+              >
+                <i class="fa-solid fa-right-to-bracket"></i>
+              </div>
+              <h3
+                class="text-xl font-semibold text-gray-800 dark:text-gray-200"
+              >
+                OAuth Login
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 mt-4">
+                Log in securely with multiple options like Google or GitHub,
+                giving flexibility to users.
+              </p>
+            </div>
+
+            <!-- Feature 6 -->
+            <div
+              class="bg-white dark:bg-gray-700 shadow-lg rounded-lg p-6 text-center"
+            >
+              <div
+                class="bg-blue-600 dark:bg-blue-800 text-white w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center"
+              >
+                <i class="fa-solid fa-mobile"></i>
+              </div>
+              <h3
+                class="text-xl font-semibold text-gray-800 dark:text-gray-200"
+              >
+                Mobile Responsive
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 mt-4">
+                Access and manage your contacts on any device with our fully
+                responsive interface.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action Section -->
+      <section
+        class="bg-blue-600 text-white py-20 animate__animated animate__fadeInUp"
+        style="
+          padding: 30px !important;
+          border-radius: 30px;
+          margin-top: 20px;
+          margin-bottom: 20px;
+        "
+      >
+        <div class="container mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-4">
+            Ready to Manage Your Contacts?
+          </h2>
+          <p class="text-lg mb-8">
+            Sign up today and experience the easiest way to manage your
+            contacts.
+          </p>
+          <a
+            data-th-href="@{'/register'}"
+            class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300"
+            >Create an Account</a
+          >
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <footer class="bg-white dark:bg-gray-800 text-black dark:text-white py-8">
+        <div class="container mx-auto text-center">
+          <p>&copy; 2024 Contact Manager. All rights reserved.</p>
+          <p>
+            Follow us on
+            <a href="#" class="text-blue-700 dark:text-blue-400">Facebook</a>,
+            <a href="#" class="text-blue-700 dark:text-blue-400">Twitter</a>,
+            and
+            <a href="#" class="text-blue-700 dark:text-blue-400">Instagram</a>.
+          </p>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
